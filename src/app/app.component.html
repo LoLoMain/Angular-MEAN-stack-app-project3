@@ -1,21 +1,76 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="http://angularjs.blogspot.ca/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- HEADER -->
+
+<!-- Top Background Image Wrapper -->
+<div class="bgded" style="background-image:url('assets/images/demo/backgrounds/study-group.jpg');">
+  <!-- ################################################################################################ -->
+  <div class="wrapper overlay">
+    <header id="header" class="hoc clear">
+
+      <nav id="mainav" class="clear">
+        <ul class="clear">
+          <li class="active"><a [routerLink]="['']">School Dojo</a></li>
+          <li><a [routerLink]="['signin']">Log In</a></li>
+          <li><a [routerLink]="['signin']">Sign Up</a></li>
+          <li><a [routerLink]="['dashboard']">Learn More</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li> <a [routerLink]="['about']"> About </a> </li>
+        </ul>
+      </nav>
+
+      <div id="logo">
+        <h1><a href="index.html">School Dojo</a></h1>
+        <h3>Bringing schools closer together</h3>
+      </div>
+
+    </header>
+  </div>
+
 
 <router-outlet></router-outlet>
+
+<!-- FOOTER  -->
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear">
+
+    <div class="one_half first">
+      <h4 class="title">School Dojo</h4>
+      <ul class="nospace linklist contact">
+        <li><i class="fa fa-map-marker"></i>
+          <address>
+          121 SW 8th Street, Miami, Florida 33130
+          </address>
+        </li>
+        <li><i class="fa fa-phone"></i>(305) 555 5555
+        <li><i class="fa fa-fax"></i>  (123) 456 7890</li>
+        <li><i class="fa fa-envelope-o"></i> info@schooldojo.com</li>
+      </ul>
+    </div>
+
+    <div class="one_half">
+      <h4 class="title">Contact Us</h4>
+      <p class="btmspace-30">Want to use School Dojo? Tell more about your school!</p>
+      <form method="post" action="#">
+        <fieldset>
+          <legend>Want to use School Dojo? Contact us:</legend>
+          <input class="btmspace-15" type="text" value="" placeholder="Name">
+          <input class="btmspace-15" type="text" value="" placeholder="Email">
+          <textarea class="btmspace-15" type="text" rows="6" placeholder="Tell us about your school.">
+          </textarea>
+          <button type="submit" value="submit">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+
+
+  </footer>
+</div>
+
+<!-- COPYRIGHT AND CREDIT INFO  -->
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear">
+    <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved - <a href="#">SchoolDojo</a></p>
+    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+   <p class="fl_left"> Icons by: singer by Gan Khoon Lay, high five by Vectors Market, and Award by Ralf Schmitzer from the Noun Project</p>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+
+ <div class="one_half">
+   <h1 class="title">Get ready for the BEST school year yet!</h1>
+   <h3>Sign Up!</h3>
+    <form (ngSubmit)="formSignUp()">
+      <fieldset>
+        <label for="first-name-input">First Name</label>
+        <input id="first-name-input" class="btmspace-15" type="text" placeholder="First Name"
+        [(ngModel)]="firstNameValue" name="fullNameValue">
+        <br>
+        <label for="last-name-input">Last Name</label>
+        <input id="last-name-input"  class="btmspace-15" type="text" placeholder="Last Name"
+        [(ngModel)]="lastNameValue" name="lastNameValue">
+        <br>
+
+        <label for="email-input">Email</label>
+        <input id ="email-input" class="btmspace-15" type="email" placeholder="teachername@browardschools.com"
+        [(ngModel)]="emailValue" name="emailValue">
+        <br>
+
+        <label for="password-input">Password</label>
+        <input id="password-input" class="btmspace-15" type="password" placeholder="Password"
+        [(ngModel)]="passwordValue" name="passwordValue">
+        <br>
+        <button> Sign Up</button>
+    </fieldset>
+  </form>
+</div>
+
+
+<div class="one_half">
+  <h1 class="title">Welcome Back, Please Log in!</h1>
+  <h3>Log In</h3>
+  <form (ngSubmit)="formLogIn()">
+   <fieldset>
+      <label for="login-email-input">Email</label>
+      <input id ="login-email-input" class="btmspace-15" type="email" placeholder="teachername@browardschools.com"
+      [(ngModel)]="loginEmail" name="loginEmail">
+      <br>
+
+      <label for="login-password-input">Password</label>
+      <input id="login-password-input" class="btmspace-15" type="password" placeholder="Password"
+      [(ngModel)]="loginPassword" name="loginPassword">
+      <br>
+      <button> Log In</button>
+  </fieldset>
+ </form>
+</div>

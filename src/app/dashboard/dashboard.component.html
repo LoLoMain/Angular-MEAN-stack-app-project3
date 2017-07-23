@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>School Dojo | DashBoard </title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="../assets/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <!-- main body -->
+
+    <!-- SideBar -->
+    <div class="sidebar one_quarter first">
+      <h6>School Dojo</h6>
+      <nav class="sdb_holder">
+          <ul class="nospace clear">
+            <li class="three_quarter first"><a href="#"><img src="assets/images/demo/gallery/school.png" alt=""></a> MAIN STREET ELEMENTARY SCHOOL</li>
+            <br>
+            <li class="three_quarter first"><a [routerLink]="['class']"><img src="assets/images/demo/gallery/students.png" alt=""></a>MY CLASS</li>
+            <br>
+            <li class="three_quarter first"><a href="#"><img src="assets/images/demo/gallery/rocket.png" alt=""></a>TEAMS</li>
+            <br>
+            <li class="three_quarter first"><a href="#"><img src="assets/images/demo/gallery/book.png" alt=""></a>MESSAGES</li>
+          </ul>
+      </nav>
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+
+    <div class="content three_quarter">
+      <div id="comments">
+
+        <h1> Welcome, Mr./Ms. {{currentUser.lastName}}</h1>
+
+        <!-- Error Messages -->
+        <p *ngIf="saveError" class="error">{{saveError}}</p>
+        <p *ngIf="saveSuccessful" class="success">{{saveSuccessful}}</p>
+
+        <!-- New Post Form -->
+        <h2>Panthers News</h2>
+        <form (ngSubmit)="createPost()">
+          <div class="block clear">
+            <label for="comment">New Post</label>
+            <textarea name="comment" id="comment" cols="25" rows="10"
+            placeholder="What's happeneing in class today?"
+            [(ngModel)]="postContent" name="posttext"></textarea>
+          </div>
+          <div>
+            <input type="submit" name="submit" value="Submit Post">
+            &nbsp;
+            <input type="reset" name="reset" value="Cancel">
+          </div>
+        </form>
+
+        <!-- Recent Post Section -->
+        <h2>Recent Posts</h2>
+        <ul>
+          <li *ngFor="let post of postList">
+            <article>
+              <header>
+                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
+                <address>
+                By <a href="#">{{post.ownerId}}</a>
+                </address>
+                <!-- <time datetime="{{post.createdAt}}"></time> -->
+              </header>
+              <div class="comcont">
+                <img src="{{post.photoUrl}}" alt="postphoto">
+                <p>{{post.content}}</p>
+              </div>
+            </article>
+          </li>
+
+
+          <li>
+            <article>
+              <header>
+                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
+                <address>
+                By <a href="#">A Name</a>
+                </address>
+                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
+              </header>
+              <div class="comcont">
+                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article>
+              <header>
+                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
+                <address>
+                By <a href="#">A Name</a>
+                </address>
+                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
+              </header>
+              <div class="comcont">
+                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article>
+              <header>
+                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
+                <address>
+                By <a href="#">A Name</a>
+                </address>
+                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
+              </header>
+              <div class="comcont">
+                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article>
+              <header>
+                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
+                <address>
+                By <a href="#">A Name</a>
+                </address>
+                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
+              </header>
+              <div class="comcont">
+                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article>
+              <header>
+                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
+                <address>
+                By <a href="#">A Name</a>
+                </address>
+                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
+              </header>
+              <div class="comcont">
+                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="../layout/scripts/jquery.min.js"></script>
+<script src="../layout/scripts/jquery.backtotop.js"></script>
+<script src="../layout/scripts/jquery.mobilemenu.js"></script>
+<!-- IE9 Placeholder Support -->
+<script src="../layout/scripts/jquery.placeholder.min.js"></script>
