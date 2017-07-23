@@ -1,0 +1,74 @@
+
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <!-- main body -->
+
+    <!-- SideBar -->
+    <div class="sidebar one_quarter first">
+      <h6>School Dojo</h6>
+      <nav class="sdb_holder">
+          <ul class="nospace clear">
+            <li class="three_quarter first"><a href="#">MAIN STREET ELEMENTARY SCHOOL<img src="assets/images/demo/gallery/school.png" alt=""></a></li>
+            <br>
+            <li class="three_quarter first"><a [routerLink]="['class']">MY CLASS<img src="assets/images/demo/gallery/students.png" alt=""></a></li>
+            <br>
+            <li class="three_quarter first"><a href="#">TEAMS<img src="assets/images/demo/gallery/rocket.png" alt=""></a></li>
+            <br>
+            <li class="three_quarter first"><a href="#">MESSAGES<img src="assets/images/demo/gallery/book.png" alt=""></a></li>
+          </ul>
+          <button class="btn" (click)="logOut()"> Log Out </button>
+      </nav>
+    </div>
+
+
+    <!-- Main Feed/Post Section -->
+    <div class="content three_quarter">
+      <!-- <h1> Mr./Ms. {{currentUser.lastName}} 's Class </h1> -->
+
+      <div class="progress">
+       <div class="progress-bar progress-bar progress-bar-striped active" role="progressbar" style="width:70%">
+         TEAM TOTAL
+       </div>
+      </div>
+
+    <div class="progress">
+     <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" [ngStyle]="{width: teamProgress + '%'}">
+       Teamwork
+     </div>
+    </div>
+
+    <div class="progress">
+      <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" style="width:10%">
+        Good Grades
+      </div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" style="width:20%">
+        Being Prepared
+      </div>
+
+    </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" style="width:20%">
+        Reading
+      </div>
+    </div>
+
+      <!-- Points "Buttons"  -->
+      <ul class="nospace clear">
+        <li class="one_quarter first"><img src="assets/images/teamwork.png" alt="team" (click)="addTeamPoints()">TEAMWORK </li>
+
+        <li class="one_quarter"><img src="assets/images/goodgrades.png" alt="award" (click)="addPoints()">GOOD GRADES</li>
+
+        <li class="one_quarter"><img src="assets/images/supplies.png" alt="backpack" (click)="addPoints()">BEING PREPARED</li>
+
+        <li class="one_quarter"><img src="assets/images/reading.png" alt="book" (click)="addPoints()">READING</li>
+      </ul>
+
+
+
+    </div> <!-- END class="content three_quarter"-->
+
+  <div class="clear"></div>
+  </main>
+</div>

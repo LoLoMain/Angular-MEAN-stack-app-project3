@@ -18,8 +18,11 @@ export class DashboardComponent implements OnInit {
 
   postContent: string;
   postPhotoUrl: string;
+  likes: number = 0;
   saveSuccessful: string;
   saveError: string;
+
+  logoutError: string;
 
   constructor(
     private authServ: AuthServiceService,
@@ -66,7 +69,23 @@ export class DashboardComponent implements OnInit {
       // this.saveError = "Don\t be a dumb 🐫";
     }
     )
+  }// END ADD NEW POSTS
 
+//ADD Likes
+addLikes(){
+  this.likes +=1;
+}
+
+
+//LOG OUT USER
+  logOut(){
+    this.authServ.logout()
+    .then(()=>{
+      this.router.navigate(['/']);
+    })
+    .catch(()=>{
+      this.logoutError = "Log out Failure";
+    });
   }
 
 }

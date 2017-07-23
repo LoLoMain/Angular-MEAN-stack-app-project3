@@ -24,12 +24,14 @@
             <br>
             <li class="three_quarter first"><a href="#"><img src="assets/images/demo/gallery/book.png" alt=""></a>MESSAGES</li>
           </ul>
+          <button class="btn" (click)="logOut()"> Log Out </button>
       </nav>
       <!-- ################################################################################################ -->
     </div>
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
 
+
+
+    <!-- Main Feed/Post Section -->
     <div class="content three_quarter">
       <div id="comments">
 
@@ -63,18 +65,20 @@
               <header>
                 <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
                 <address>
-                By <a href="#">{{post.ownerId}}</a>
+                By <a href="#" *ngIf="post.ownerId !== currentUser._id">{{post.ownerId.lastName}}</a>
+                   <a href="#"*ngIf="post.ownerId === currentUser._id">ME</a>
                 </address>
                 <!-- <time datetime="{{post.createdAt}}"></time> -->
               </header>
               <div class="comcont">
                 <img src="{{post.photoUrl}}" alt="postphoto">
                 <p>{{post.content}}</p>
+                <p *ngIf="likes > 0"> {{likes}} Likes</p>
               </div>
+              <button class="btn" (click)="addLikes()">Like</button>
+
             </article>
           </li>
-
-
           <li>
             <article>
               <header>
