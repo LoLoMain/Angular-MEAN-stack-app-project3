@@ -67,9 +67,21 @@
       </ul>
 
 
+      <div class="students">
+        <h1> {{currentUser.title}} {{currentUser.lastName}} 's Students !</h1>
 
-    </div> <!-- END class="content three_quarter"-->
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail" *ngFor="let student of studentList; let i = index">
+            <img src="{{student.picture}}" alt="studentPhoto">
+            <div class="caption">
+              <h3>{{student.name}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div class="clear"></div>
+    </div><!-- END class="content three_quarter" -->
+
+  <!-- <div class="clear"></div> -->
   </main>
 </div>

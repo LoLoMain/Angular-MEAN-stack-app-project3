@@ -10,6 +10,7 @@ import {AuthServiceService} from '../service/auth-service.service';
 })
 export class ClassesComponent implements OnInit {
   currentUser: any = {};
+  studentList: object[];
 
   teamProgress: any = 0;
   gradesProgress: any = 0;
@@ -26,7 +27,8 @@ export class ClassesComponent implements OnInit {
     this.authServ.checkLogin()
     .then((userFromApi)=>{
       this.currentUser = userFromApi;
-      console.log(this.currentUser.class);
+
+      this.studentList = this.currentUser.class.students;
     })
     .catch((err)=>{
       this.router.navigate(['/'])
