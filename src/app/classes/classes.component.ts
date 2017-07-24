@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import {AuthServiceService} from '../service/auth-service.service';
 
 @Component({
   selector: 'app-classes',
@@ -6,15 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./classes.component.css']
 })
 export class ClassesComponent implements OnInit {
+  currentUser: any = {};
+
   teamProgress: any = 1;
   gradesProgress: any = 1;
   prepProgress: any = 1;
   readProgress: any = 1;
 
   teamTotal: any;
-  constructor() { }
+  constructor(
+    private authServ: AuthServiceService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.authServ.checkLogin()
+    .then((userFromApi)=>{
+      this.currentUser = userFromApi;
+      console.log(this.currentUser.class);
+    })
+    .catch((err)=>{
+      this.router.navigate(['/'])
+    })
   }
 
   addTeamPoints(){

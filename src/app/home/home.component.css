@@ -1,0 +1,13 @@
+.thumbnail{
+  height: 234px;
+  margin: auto;
+  border: none;
+}
+
+.left{
+  float:left;
+}
+
+.right{
+  float: right;
+}

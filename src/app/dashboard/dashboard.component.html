@@ -16,15 +16,15 @@
       <h6>School Dojo</h6>
       <nav class="sdb_holder">
           <ul class="nospace clear">
-            <li class="three_quarter first"><a href="#"><img src="assets/images/demo/gallery/school.png" alt=""></a> MAIN STREET ELEMENTARY SCHOOL</li>
+            <li class="three_quarter first">MAIN STREET ELEMENTARY SCHOOL<a href="#"><img src="assets/images/demo/gallery/school.png" alt=""></a> </li>
             <br>
-            <li class="three_quarter first"><a [routerLink]="['class']"><img src="assets/images/demo/gallery/students.png" alt=""></a>MY CLASS</li>
+            <li class="three_quarter first">MY CLASS<a [routerLink]="['class']"><img src="assets/images/demo/gallery/students.png" alt=""></a></li>
             <br>
-            <li class="three_quarter first"><a href="#"><img src="assets/images/demo/gallery/rocket.png" alt=""></a>TEAMS</li>
+            <li class="three_quarter first">TEAMS<a href="#"><img src="assets/images/demo/gallery/rocket.png" alt=""></a></li>
             <br>
-            <li class="three_quarter first"><a href="#"><img src="assets/images/demo/gallery/book.png" alt=""></a>MESSAGES</li>
+            <li class="three_quarter first">MESSAGES<a href="#"><img src="assets/images/demo/gallery/book.png" alt=""></a></li>
           </ul>
-          <button class="btn" (click)="logOut()"> Log Out </button>
+          <button class="btn logout" (click)="logOut()"> Log Out </button>
       </nav>
       <!-- ################################################################################################ -->
     </div>
@@ -63,7 +63,7 @@
           <li *ngFor="let post of postList">
             <article>
               <header>
-                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
+                <figure class="avatar"><img src="assets/images/demo/new_logo.png" alt=""></figure>
                 <address>
                 By <a href="#" *ngIf="post.ownerId !== currentUser._id">{{post.ownerId.lastName}}</a>
                    <a href="#"*ngIf="post.ownerId === currentUser._id">ME</a>
@@ -73,67 +73,22 @@
               <div class="comcont">
                 <img src="{{post.photoUrl}}" alt="postphoto">
                 <p>{{post.content}}</p>
-                <p *ngIf="likes > 0"> {{likes}} Likes</p>
+                <p *ngIf="likes > 0"> {{likes}} Likes <img src="assets/images/heart.png" alt=""></p>
               </div>
-              <button class="btn" (click)="addLikes()">Like</button>
+              <button class="btn post" (click)="addLikes()">Like</button>
+              <button class="btn post" (click)="addCommentBox()">Comment</button>
+            </article>
 
-            </article>
-          </li>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
+              <!-- Toggle with "addCommentBox()" -->
+            <!-- <div class="one_quarter first">
+              <form>
+                <fieldset>
+                  <textarea class="btmspace-15" type="text" rows="3" placeholder="Wow! Great Job!">
+                  </textarea>
+                  <button type="submit" class="btn" value="submit">Submit</button>
+                </fieldset>
+              </form>
+            </div> -->
           </li>
           <li>
             <article>
