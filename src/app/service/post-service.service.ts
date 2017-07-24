@@ -43,6 +43,22 @@ export class PostServiceService {
     .map(res => res.json())
   }// END RETRIEVE POSTS
 
+   // NEWLY ADDED
+  //ADD LIKES TO POST AND SAVE
+   addLikesToPost(postlikes, postid) {
+    return this.myHttp
+    .patch(
+      'http://localhost:3000/api/updatepost/' + postid,
+      {
+        likes: postlikes
+      },
+      //send the cookies across domains
+      { withCredentials: true}
+    )
+    //Parse the JSON
+    .map(res => res.json())
+  }// END ADD LIKES TO POST
+
 
 }
 

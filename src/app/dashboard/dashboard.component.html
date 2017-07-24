@@ -75,7 +75,7 @@
                 <h4>{{post.content}}</h4>
                 <p *ngIf="likes[i] > 0"> {{likes[i]}} Likes <img src="assets/images/thumbsup.png" alt="thumbsup"></p>
               </div>
-              <button class="btn post" (click)="addLikes(i)">Like</button>
+              <button class="btn post" (click)="addLikes(i, post._id)">Like</button>
               <button class="btn post" (click)="addCommentBox()">Comment</button>
             </article>
 

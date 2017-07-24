@@ -11,10 +11,10 @@ import {AuthServiceService} from '../service/auth-service.service';
 export class ClassesComponent implements OnInit {
   currentUser: any = {};
 
-  teamProgress: any = 1;
-  gradesProgress: any = 1;
-  prepProgress: any = 1;
-  readProgress: any = 1;
+  teamProgress: any = 0;
+  gradesProgress: any = 0;
+  prepProgress: any = 0;
+  readProgress: any = 0;
 
   teamTotal: any;
   constructor(
@@ -54,3 +54,27 @@ export class ClassesComponent implements OnInit {
   }
 
 }
+
+
+// sumPoints(){
+//   this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
+// }
+//
+// addTeamPoints(){
+//   this.teamProgress +=5;
+//   sumPoints();
+// }
+//
+// addGradePoints(){
+//   this.gradesProgress +=5;
+//   sumPoints();
+// }
+// addPrepPoints(){
+//   this.prepProgress +=5;
+//   sumPoints();
+//
+// }
+// addReadPoints(){
+//   this.readProgress +=5;
+//   sumPoints();
+// }

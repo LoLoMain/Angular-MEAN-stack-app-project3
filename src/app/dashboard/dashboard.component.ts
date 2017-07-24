@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
 
   postList: any[] =[];
   postListErrorMessage: string;
+  postId: string;
 
   postContent: string;
   postPhotoUrl: string;
@@ -48,13 +49,9 @@ export class DashboardComponent implements OnInit {
     .subscribe((postList)=>{
       this.postList = postList;
 
-console.log("before for loop" + postList.length);
-
       postList.forEach((post)=> {
-        this.likes.push(0);
-        console.log("blahhhhhhhh")
+        this.likes.push(post.likes);
       });
-
 
     },
     () =>{
@@ -76,18 +73,20 @@ console.log("before for loop" + postList.length);
     (err)=>{
       this.saveSuccessful = "";
       this.saveError = " Whoops! something went wrong! Try again.";
-      // this.saveError = "Don\t be a dumb 🐫";
     }
     )
   }// END ADD NEW POSTS
 
 //ADD Likes
-addLikes(i){
-  console.log("i issssssssssss" + i);
-  this.likes[i] += 1;
-  console.log(this.likes[i]);
-}
+addLikes(i, id){
+    this.likes[i] += 1;
 
+  this.postServ.addLikesToPost(this.likes[i], id)
+  .subscribe((postFromApi) =>{
+    console.log(this.likes[i]);
+  }
+  )
+}
 
 //LOG OUT USER
   logOut(){
