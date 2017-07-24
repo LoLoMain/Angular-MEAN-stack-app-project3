@@ -1,48 +1,61 @@
+<div class="container" id="grayscale">
 
- <div class="one_half">
-   <h1 class="title">Get ready for the BEST school year yet!</h1>
-   <h3>Sign Up!</h3>
-    <form (ngSubmit)="formSignUp()">
-      <fieldset>
-        <label for="first-name-input">First Name</label>
-        <input id="first-name-input" class="btmspace-15" type="text" placeholder="First Name"
-        [(ngModel)]="firstNameValue" name="fullNameValue">
-        <br>
-        <label for="last-name-input">Last Name</label>
-        <input id="last-name-input"  class="btmspace-15" type="text" placeholder="Last Name"
-        [(ngModel)]="lastNameValue" name="lastNameValue">
+   <div class="one_half">
+     <h1 class="title">Get ready for the BEST school year yet!</h1>
+     <h3>Sign Up!</h3>
+      <form class="form-group" (ngSubmit)="formSignUp()">
+        <fieldset>
+          <label for="title-input">Title</label>
+          <select class="selectpicker">
+            <option value="Mr">Mr.</option>
+            <option value="Mrs">Mrs.</option>
+            <option value="Miss">Miss</option>
+            <option value="Ms">Ms.</option>
+            <option value="Dr">Dr.</option>
+            <option value="Prof">Professor</option>
+          </select>
+
+          <label for="first-name-input">First Name</label>
+          <input id="first-name-input" class="btmspace-15" type="text" placeholder="First Name"
+          [(ngModel)]="firstNameValue" class="form-control" name="fullNameValue">
+          <br>
+          <label for="last-name-input">Last Name</label>
+          <input id="last-name-input"  class="btmspace-15" type="text" placeholder="Last Name"
+          [(ngModel)]="lastNameValue"  class="form-control" name="lastNameValue">
+          <br>
+
+          <label for="email-input">Email</label>
+          <input id ="email-input" class="btmspace-15" type="email" placeholder="teachername@browardschools.com"
+          [(ngModel)]="emailValue" class="form-control"  name="emailValue">
+          <br>
+
+          <label for="password-input">Password</label>
+          <input id="password-input" class="btmspace-15" type="password" placeholder="Password"
+          [(ngModel)]="passwordValue" class="form-control" name="passwordValue">
+          <br>
+          <button type="button" class="btn btn-default btn-lg">Sign Up</button>
+      </fieldset>
+    </form>
+  </div><!--END class="one_half"  -->
+
+
+  <div class="one_half">
+    <h1 class="title">Welcome Back, Please Log in!</h1>
+    <h3>Log In!</h3>
+    <form (ngSubmit)="formLogIn()">
+     <fieldset>
+        <label for="login-email-input">Email</label>
+        <input id ="login-email-input" class="btmspace-15" type="email" placeholder="teachername@browardschools.com"
+        [(ngModel)]="loginEmail" class="form-control" name="loginEmail">
         <br>
 
-        <label for="email-input">Email</label>
-        <input id ="email-input" class="btmspace-15" type="email" placeholder="teachername@browardschools.com"
-        [(ngModel)]="emailValue" name="emailValue">
+        <label for="login-password-input">Password</label>
+        <input id="login-password-input" class="btmspace-15" type="password" placeholder="Password"
+        [(ngModel)]="loginPassword" class="form-control" name="loginPassword">
         <br>
-
-        <label for="password-input">Password</label>
-        <input id="password-input" class="btmspace-15" type="password" placeholder="Password"
-        [(ngModel)]="passwordValue" name="passwordValue">
-        <br>
-        <button class="btn"> Sign Up</button>
+        <button type="button" class="btn btn-default btn-lg">Log In</button>
     </fieldset>
-  </form>
-</div>
+   </form>
+  </div> <!--END class="one_half"  -->
 
-
-<div class="one_half">
-  <h1 class="title">Welcome Back, Please Log in!</h1>
-  <h3>Log In</h3>
-  <form (ngSubmit)="formLogIn()">
-   <fieldset>
-      <label for="login-email-input">Email</label>
-      <input id ="login-email-input" class="btmspace-15" type="email" placeholder="teachername@browardschools.com"
-      [(ngModel)]="loginEmail" name="loginEmail">
-      <br>
-
-      <label for="login-password-input">Password</label>
-      <input id="login-password-input" class="btmspace-15" type="password" placeholder="Password"
-      [(ngModel)]="loginPassword" name="loginPassword">
-      <br>
-      <button class="btn"> Log In</button>
-  </fieldset>
- </form>
-</div>
+</div><!--END class="container  -->
