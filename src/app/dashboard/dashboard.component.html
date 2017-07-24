@@ -16,13 +16,13 @@
       <h6>School Dojo</h6>
       <nav class="sdb_holder">
           <ul class="nospace clear">
-            <li class="three_quarter first">MAIN STREET ELEMENTARY SCHOOL<a href="#"><img src="assets/images/demo/gallery/school.png" alt=""></a> </li>
+            <li class="three_quarter first">MAIN STREET ELEMENTARY SCHOOL<a href="#"><img src="assets/images/demo/gallery/school.png" alt="school"></a> </li>
             <br>
-            <li class="three_quarter first">MY CLASS<a [routerLink]="['class']"><img src="assets/images/demo/gallery/students.png" alt=""></a></li>
+            <li class="three_quarter first">MY CLASS<a [routerLink]="['class']"><img src="assets/images/demo/gallery/students.png" alt="students"></a></li>
             <br>
-            <li class="three_quarter first">TEAMS<a href="#"><img src="assets/images/demo/gallery/rocket.png" alt=""></a></li>
+            <li class="three_quarter first">TEAMS<a href="#"><img src="assets/images/demo/gallery/rocket.png" alt="rocket"></a></li>
             <br>
-            <li class="three_quarter first">MESSAGES<a href="#"><img src="assets/images/demo/gallery/book.png" alt=""></a></li>
+            <li class="three_quarter first">MESSAGES<a href="#"><img src="assets/images/demo/gallery/book.png" alt="book"></a></li>
           </ul>
           <button class="btn logout" (click)="logOut()"> Log Out </button>
       </nav>
@@ -35,7 +35,7 @@
     <div class="content three_quarter">
       <div id="comments">
 
-        <h1> Welcome, Mr./Ms. {{currentUser.lastName}}</h1>
+        <h1> Welcome, {{currentUser.title}} {{currentUser.lastName}} !</h1>
 
         <!-- Error Messages -->
         <p *ngIf="saveError" class="error">{{saveError}}</p>
@@ -46,7 +46,7 @@
         <form (ngSubmit)="createPost()">
           <div class="block clear">
             <label for="comment">New Post</label>
-            <textarea name="comment" id="comment" cols="25" rows="10"
+            <textarea name="comment" id="comment" cols="25" rows="5"
             placeholder="What's happeneing in class today?"
             [(ngModel)]="postContent" name="posttext"></textarea>
           </div>
@@ -60,7 +60,7 @@
         <!-- Recent Post Section -->
         <h2>Recent Posts</h2>
         <ul>
-          <li *ngFor="let post of postList">
+          <li *ngFor="let post of postList; let i = index">
             <article>
               <header>
                 <figure class="avatar"><img src="assets/images/demo/new_logo.png" alt=""></figure>
@@ -72,10 +72,10 @@
               </header>
               <div class="comcont">
                 <img src="{{post.photoUrl}}" alt="postphoto">
-                <p>{{post.content}}</p>
-                <p *ngIf="likes > 0"> {{likes}} Likes <img src="assets/images/heart.png" alt=""></p>
+                <h4>{{post.content}}</h4>
+                <p *ngIf="likes[i] > 0"> {{likes[i]}} Likes <img src="assets/images/thumbsup.png" alt="thumbsup"></p>
               </div>
-              <button class="btn post" (click)="addLikes()">Like</button>
+              <button class="btn post" (click)="addLikes(i)">Like</button>
               <button class="btn post" (click)="addCommentBox()">Comment</button>
             </article>
 

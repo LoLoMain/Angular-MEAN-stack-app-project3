@@ -9,16 +9,17 @@ export class AuthServiceService {
   constructor(
     private myHttp: Http
   ) { }
-  
+
 
 //POST Sign Up
 //an argument for each 'req.body' in the API route
-signup(firstName, lastName, email, password){
+signup(title, firstName, lastName, email, password){
   return this.myHttp
   .post(
     'http://localhost:3000/api/signup', // need to change to a variable
     {
             //express API
+      signupTitle: title,      
       signupFirstName: firstName,
       signupLastName: lastName,
       signupEmail: email,

@@ -11,6 +11,7 @@ import { AuthServiceService } from '../service/auth-service.service';
 })
 export class SigninComponent implements OnInit {
   //Sign Up variables
+  titleValue: string;
   firstNameValue: string;
   lastNameValue: string;
   emailValue: string;
@@ -38,10 +39,11 @@ export class SigninComponent implements OnInit {
 //Sign Up with signin.component.html and AuthServiceService
   formSignUp() {
                    // Service Function: parameters are from Ng Model in
-    this.authServ.signup(this.firstNameValue, this.lastNameValue, this.emailValue, this.passwordValue)
+    this.authServ.signup(this.titleValue, this.firstNameValue, this.lastNameValue, this.emailValue, this.passwordValue)
     .then((resultFromApi)=> {
       console.log(resultFromApi);
       //Clear Form
+      this.titleValue = "";
       this.firstNameValue = "";
       this.lastNameValue = "";
       this.emailValue = "";

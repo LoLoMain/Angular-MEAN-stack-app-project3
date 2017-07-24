@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
   postContent: string;
   postPhotoUrl: string;
-  likes: number = 0;
+  likes: any[] = [];
   saveSuccessful: string;
   saveError: string;
 
@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
     .then((userFromApi)=>{
       this.currentUser = userFromApi;
       this.showPosts();
+      console.log(this.currentUser);
     })
     .catch((err)=>{
       this.router.navigate(['/'])
@@ -46,6 +47,15 @@ export class DashboardComponent implements OnInit {
     this.postServ.retrievePosts()
     .subscribe((postList)=>{
       this.postList = postList;
+
+console.log("before for loop" + postList.length);
+
+      postList.forEach((post)=> {
+        this.likes.push(0);
+        console.log("blahhhhhhhh")
+      });
+
+
     },
     () =>{
       this.postListErrorMessage = "No Posts to Display, Why don't you try adding some!"
@@ -72,8 +82,10 @@ export class DashboardComponent implements OnInit {
   }// END ADD NEW POSTS
 
 //ADD Likes
-addLikes(){
-  this.likes +=1;
+addLikes(i){
+  console.log("i issssssssssss" + i);
+  this.likes[i] += 1;
+  console.log(this.likes[i]);
 }
 
 
