@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+//New for File Uploader
+import { FileUploader} from 'ng2-file-upload';
 
 import {AuthServiceService} from '../service/auth-service.service';
 import {PostServiceService} from '../service/post-service.service';
@@ -20,9 +22,13 @@ export class DashboardComponent implements OnInit {
   postContent: string;
   postPhotoUrl: string;
   likes: any[] = [];
+
+  fileUpload = new FileUploader({
+    url: 'http://localhost:3000/api/posts'
+  });
+
   saveSuccessful: string;
   saveError: string;
-
   logoutError: string;
 
   constructor(
@@ -63,18 +69,37 @@ export class DashboardComponent implements OnInit {
 
   // ADD NEW POSTS
   createPost(){
-    this.postServ.newPost(this.postContent, this.postPhotoUrl)
-    .subscribe((newPostFromApi)=>{
-      this.postList.unshift(newPostFromApi);
-      this.saveSuccessful = "Saved Successfully!"
-      this.saveError = "";
+    this.fileUpload.onBuildItemForm = (item, form)=>{
+      form.append('postContent', this.postContent);
+    };
 
-    },
-    (err)=>{
+    this.fileUpload.onSuccessItem = (item, response) =>{
+        const newPostFromApi = JSON.parse(response);
+        this.postList.unshift(newPostFromApi);
+        console.log(item);
+        console.log(response);
+        this.saveSuccessful = "Saved Successfully!"
+        this.saveError = "";
+    };
+
+    this.fileUpload.onErrorItem = (item, response)=>{
+      console.log(response);
       this.saveSuccessful = "";
       this.saveError = " Whoops! something went wrong! Try again.";
-    }
-    )
+    };
+
+    //initiates AJAX request
+    this.fileUpload.uploadAll();
+
+    // this.postServ.newPost(this.postContent, this.postPhotoUrl)
+    // .subscribe((newPostFromApi)=>{
+    //
+    // },
+    // (err)=>{
+    //   this.saveSuccessful = "";
+    //   this.saveError = " Whoops! something went wrong! Try again.";
+    // }
+    //)
   }// END ADD NEW POSTS
 
 //ADD Likes

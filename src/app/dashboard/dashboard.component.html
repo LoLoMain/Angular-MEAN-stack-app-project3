@@ -49,6 +49,11 @@
             <textarea name="comment" id="comment" cols="25" rows="5"
             placeholder="What's happeneing in class today?"
             [(ngModel)]="postContent" name="posttext"></textarea>
+
+            <label for="post-picture-input">Add a Photo:</label>
+            <input id="post-picture-input" type="file"
+             ng2FileSelect [uploader]="fileUpload" name="postPhoto">
+             <!--must always be ng2FileSelect[uploader]="variableName"  -->
           </div>
           <div>
             <input type="submit" name="submit" value="Submit Post">
@@ -71,7 +76,7 @@
                 <!-- <time datetime="{{post.createdAt}}"></time> -->
               </header>
               <div class="comcont">
-                <img src="{{post.photoUrl}}" alt="postphoto">
+                <img *ngIf= "post.photo" [src]=" 'http://localhost:3000' + post.photo" alt="postphoto">
                 <h4>{{post.content}}</h4>
                 <p *ngIf="likes[i] > 0"> {{likes[i]}} Likes <img src="assets/images/thumbsup.png" alt="thumbsup"></p>
               </div>

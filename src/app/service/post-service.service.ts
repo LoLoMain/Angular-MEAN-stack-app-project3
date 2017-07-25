@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-//probably want to use subscribe to keep getting subscribe instead of to promise to get constant updates
+//Use subscribe to keep getting subscribe instead of to promise to get constant updates
 // either that or create a set interval
 
 
@@ -34,7 +34,6 @@ export class PostServiceService {
       'http://localhost:3000/api/posts',
       {
         postContent: postContent,
-        postPhotoUrl: photoUrl
       },
       //send the cookies across domains
       { withCredentials: true}

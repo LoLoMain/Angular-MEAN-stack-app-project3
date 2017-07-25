@@ -21,57 +21,63 @@
     </div>
 
 
-    <!-- Main Feed/Post Section -->
+    <!-- PROGRESS BARS Section -->
     <div class="content three_quarter">
-      <!-- <h1> Mr./Ms. {{currentUser.lastName}} 's Class </h1> -->
 
+      <label for="team-total-bar"> TEAM TOTAL</label>
       <div class="progress">
        <div class="progress-bar progress-bar progress-bar-striped active"
         style="min-width: 5em;" role="progressbar" [ngStyle]="{width: teamTotal + '%'}">
-         TEAM TOTAL
+
        </div>
       </div>
 
+    <label for="team-total-bar"> TEAMWORK</label>
     <div class="progress">
      <div class="progress-bar progress-bar-success progress-bar-striped active"
-      role="progressbar" style="min-width: 5em;" [ngStyle]="{width: teamProgress + '%'}"> Teamwork
+      role="progressbar" style="min-width: 5em;" [ngStyle]="{width: teamProgress + '%'}">
      </div>
     </div>
 
+    <label for="team-total-bar"> GOOD GRADES</label>
     <div class="progress">
       <div class="progress-bar progress-bar-warning progress-bar-striped active"
-       role="progressbar" style="min-width: 5em;" [ngStyle]="{width: gradesProgress + '%'}"> Good Grades
+       role="progressbar" style="min-width: 5em;" [ngStyle]="{width: gradesProgress + '%'}">
       </div>
     </div>
+
+    <label for="team-total-bar"> BEING PREPARED</label>
     <div class="progress">
       <div class="progress-bar progress-bar-danger progress-bar-striped active"
-       role="progressbar" style="min-width: 5em;" [ngStyle]="{width: prepProgress + '%'}"> Being Prepared
+       role="progressbar" style="min-width: 5em;" [ngStyle]="{width: prepProgress + '%'}">
       </div>
-
     </div>
+
+    <label for="team-total-bar"> iREADY</label>
     <div class="progress">
       <div class="progress-bar progress-bar-info progress-bar-striped active"
-       role="progressbar" style="min-width: 5em;" [ngStyle]="{width: readProgress + '%'}">Reading
+       role="progressbar" style="min-width: 5em;" [ngStyle]="{width: readProgress + '%'}">
       </div>
     </div>
 
       <!-- Points "Buttons"  -->
       <ul class="nospace clear">
-        <li class="one_quarter first"><img src="assets/images/teamwork.png" alt="team" (click)="addTeamPoints()">TEAMWORK </li>
+        <h1>Click an icon below to add points for a cateogry:</h1>
+        <li class="one_quarter first"><img src="assets/images/teamwork.png" alt="team" (click)="addTeamPoints(currentUser.class._id)">TEAMWORK </li>
 
-        <li class="one_quarter"><img src="assets/images/goodgrades.png" alt="award" (click)="addGradePoints()">GOOD GRADES</li>
+        <li class="one_quarter"><img src="assets/images/goodgrades.png" alt="award" (click)="addGradePoints()"><br>GOOD GRADES</li>
 
-        <li class="one_quarter"><img src="assets/images/supplies.png" alt="backpack" (click)="addPrepPoints()">BEING PREPARED</li>
+        <li class="one_quarter"><img src="assets/images/supplies.png" alt="backpack" (click)="addPrepPoints()"><br>BEING PREPARED</li>
 
-        <li class="one_quarter"><img src="assets/images/reading.png" alt="book" (click)="addReadPoints()">READING</li>
+        <li class="one_quarter"><img src="assets/images/reading.png" alt="book" (click)="addReadPoints()"> <br>iREADY</li>
       </ul>
 
 
       <div class="students">
-        <h1> {{currentUser.title}} {{currentUser.lastName}} 's Students !</h1>
+        <h1> {{currentUser.title}} {{currentUser.lastName}}'s Students:</h1>
 
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail" *ngFor="let student of studentList; let i = index">
+        <div class="col-xs-6 col-md-3" *ngFor="let student of studentList; let i = index">
+          <div class="thumbnail">
             <img src="{{student.picture}}" alt="studentPhoto">
             <div class="caption">
               <h3>{{student.name}}</h3>

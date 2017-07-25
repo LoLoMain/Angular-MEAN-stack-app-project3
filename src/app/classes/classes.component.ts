@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {AuthServiceService} from '../service/auth-service.service';
+import {ClassService} from '../service/class.service';
 
 @Component({
   selector: 'app-classes',
@@ -20,6 +21,7 @@ export class ClassesComponent implements OnInit {
   teamTotal: any;
   constructor(
     private authServ: AuthServiceService,
+    private classServ: ClassService,
     private router: Router
   ) { }
 
@@ -35,9 +37,15 @@ export class ClassesComponent implements OnInit {
     })
   }
 
-  addTeamPoints(){
+  addTeamPoints(id){
     this.teamProgress +=5;
     this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
+
+    this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
+      .subscribe((classFromApi)=>{
+        console.log( `${this.currentUser.lastName}class has ${this.teamProgress}  teamwork points!`);
+
+      })
   }
   addGradePoints(){
     this.gradesProgress +=5;

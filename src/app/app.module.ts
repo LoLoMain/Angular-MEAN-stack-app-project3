@@ -3,16 +3,21 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms'
 import { HttpModule, Response } from '@angular/http'
 import { AppRoutingModule } from './app-routing.module';
+//handles File Upload - Different direcive for Drag and Drop
+import { FileSelectDirective } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SigninComponent } from './signin/signin.component';
+import { ClassesComponent } from './classes/classes.component';
 
 //import Services and add to providers below
 import {AuthServiceService} from './service/auth-service.service';
 import {PostServiceService} from './service/post-service.service';
-import { ClassesComponent } from './classes/classes.component';
+import {ClassService} from './service/class.service';
+
+
 
 @NgModule({
   declarations: [
@@ -20,17 +25,19 @@ import { ClassesComponent } from './classes/classes.component';
     HomeComponent,
     DashboardComponent,
     SigninComponent,
-    ClassesComponent
+    ClassesComponent,
+    FileSelectDirective  //File Uploads
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
   providers: [
     AuthServiceService,
-    PostServiceService
+    PostServiceService,
+    ClassService
   ],
   bootstrap: [AppComponent]
 })
