@@ -13,7 +13,7 @@ export class ClassService {
 
   addPointsToClass(classId, teamProgress, gradesProgress, readingProgress, prepProgress){
     return this.myHttp
-    .patch(
+    .put(
       'http://localhost:3000/api/classpoints/' + classId,
       {
         teamPoints: teamProgress,

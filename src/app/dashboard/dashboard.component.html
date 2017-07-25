@@ -42,7 +42,7 @@
         <p *ngIf="saveSuccessful" class="success">{{saveSuccessful}}</p>
 
         <!-- New Post Form -->
-        <h2>Panthers News</h2>
+        <h2>Team News</h2>
         <form (ngSubmit)="createPost()">
           <div class="block clear">
             <label for="comment">New Post</label>
@@ -65,6 +65,8 @@
         <!-- Recent Post Section -->
         <h2>Recent Posts</h2>
         <ul>
+
+            <!-- this.teamProgress = this.currentUser.class.teamworkPoints; -->
           <li *ngFor="let post of postList; let i = index">
             <article>
               <header>

@@ -29,13 +29,18 @@ export class ClassesComponent implements OnInit {
     this.authServ.checkLogin()
     .then((userFromApi)=>{
       this.currentUser = userFromApi;
-
+      this.teamProgress = this.currentUser.class.teamworkPoints;
+      this.gradesProgress= this.currentUser.class.gradePoints;
+      this.prepProgress = this.currentUser.class.readingPoints;
+      this.readProgress= this.currentUser.class.prepPoints;
       this.studentList = this.currentUser.class.students;
     })
     .catch((err)=>{
       this.router.navigate(['/'])
     })
   }
+
+//Refactor these functions
 
   addTeamPoints(id){
     this.teamProgress +=5;
@@ -47,19 +52,37 @@ export class ClassesComponent implements OnInit {
 
       })
   }
-  addGradePoints(){
+  addGradePoints(id){
     this.gradesProgress +=5;
     this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
 
+    this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
+      .subscribe((classFromApi)=>{
+        console.log( `${this.currentUser.lastName}class has ${this.teamProgress}  teamwork points!`);
+
+      })
   }
-  addPrepPoints(){
+
+  addPrepPoints(id){
     this.prepProgress +=5;
     this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
 
+    this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
+      .subscribe((classFromApi)=>{
+        console.log( `${this.currentUser.lastName}class has ${this.teamProgress}  teamwork points!`);
+
+      })
+
   }
-  addReadPoints(){
+  addReadPoints(id){
     this.readProgress +=5;
     this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
+
+    this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
+      .subscribe((classFromApi)=>{
+        console.log( `${this.currentUser.lastName}class has ${this.teamProgress}  teamwork points!`);
+
+      })
 
   }
 
