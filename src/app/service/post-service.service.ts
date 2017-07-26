@@ -4,6 +4,8 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { environment } from '../../environments/environment';
+
 //Use subscribe to keep getting subscribe instead of to promise to get constant updates
 // either that or create a set interval
 
@@ -19,7 +21,7 @@ export class PostServiceService {
   retrievePosts() {
     return this.myHttp
     .get(
-      'http://localhost:3000/api/posts',
+      environment.apiBase + '/api/posts',
       //send the cookies across domains
       { withCredentials: true}
     )
@@ -31,7 +33,7 @@ export class PostServiceService {
    newPost(postContent,photoUrl) {
     return this.myHttp
     .post(
-      'http://localhost:3000/api/posts',
+      environment.apiBase + '/api/posts',
       {
         postContent: postContent,
       },
@@ -47,7 +49,7 @@ export class PostServiceService {
    addLikesToPost(postlikes, postid) {
     return this.myHttp
     .patch(
-      'http://localhost:3000/api/updatepost/' + postid,
+      environment.apiBase + '/api/updatepost/' + postid,
       {
         likes: postlikes
       },

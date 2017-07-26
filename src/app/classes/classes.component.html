@@ -16,7 +16,7 @@
             <br>
             <li class="three_quarter first"><a href="#">MESSAGES<img src="assets/images/demo/gallery/book.png" alt=""></a></li>
           </ul>
-          <button class="btn" (click)="logOut()"> Log Out </button>
+          <button class="btn"> Log Out </button>
       </nav>
     </div>
 
@@ -65,11 +65,11 @@
         <h1>Click an icon below to add points for a cateogry:</h1>
         <li class="one_quarter first"><img src="assets/images/teamwork.png" alt="team" (click)="addTeamPoints(currentUser.class._id)">TEAMWORK </li>
 
-        <li class="one_quarter"><img src="assets/images/goodgrades.png" alt="award" (click)="addGradePoints()"><br>GOOD GRADES</li>
+        <li class="one_quarter"><img src="assets/images/goodgrades.png" alt="award" (click)="addGradePoints(currentUser.class._id)"><br>GOOD GRADES</li>
 
-        <li class="one_quarter"><img src="assets/images/supplies.png" alt="backpack" (click)="addPrepPoints()"><br>BEING PREPARED</li>
+        <li class="one_quarter"><img src="assets/images/supplies.png" alt="backpack" (click)="addPrepPoints(currentUser.class._id)"><br>BEING PREPARED</li>
 
-        <li class="one_quarter"><img src="assets/images/reading.png" alt="book" (click)="addReadPoints()"> <br>iREADY</li>
+        <li class="one_quarter"><img src="assets/images/reading.png" alt="book" (click)="addReadPoints(currentUser.class._id)"> <br>iREADY</li>
       </ul>
 
 

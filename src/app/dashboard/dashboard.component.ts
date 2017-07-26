@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
     this.authServ.checkLogin()
     .then((userFromApi)=>{
       this.currentUser = userFromApi;
+      console.log(this.currentUser.team);
       this.showPosts();
       console.log(this.currentUser);
     })
@@ -53,7 +54,7 @@ export class DashboardComponent implements OnInit {
   showPosts(){
     this.postServ.retrievePosts()
     .subscribe((postList)=>{
-      this.postList = postList;
+      this.postList = postList.reverse();
 
       postList.forEach((post)=> {
         this.likes.push(post.likes);

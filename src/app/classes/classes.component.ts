@@ -29,6 +29,7 @@ export class ClassesComponent implements OnInit {
     this.authServ.checkLogin()
     .then((userFromApi)=>{
       this.currentUser = userFromApi;
+      console.log(this.currentUser.team);
       this.teamProgress = this.currentUser.class.teamworkPoints;
       this.gradesProgress= this.currentUser.class.gradePoints;
       this.prepProgress = this.currentUser.class.readingPoints;

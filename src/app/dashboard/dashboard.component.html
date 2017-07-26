@@ -3,7 +3,7 @@
 <title>School Dojo | DashBoard </title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../assets/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="/assets/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
 
@@ -16,7 +16,7 @@
       <h6>School Dojo</h6>
       <nav class="sdb_holder">
           <ul class="nospace clear">
-            <li class="three_quarter first">MAIN STREET ELEMENTARY SCHOOL<a href="#"><img src="assets/images/demo/gallery/school.png" alt="school"></a> </li>
+            <li class="three_quarter first">MAIN STREET ELEMENTARY SCHOOL<img src="assets/images/demo/gallery/school.png" alt="school"></li>
             <br>
             <li class="three_quarter first">MY CLASS<a [routerLink]="['class']"><img src="assets/images/demo/gallery/students.png" alt="students"></a></li>
             <br>
@@ -26,8 +26,7 @@
           </ul>
           <button class="btn logout" (click)="logOut()"> Log Out </button>
       </nav>
-      <!-- ################################################################################################ -->
-    </div>
+    </div> <!-- END SideBar -->
 
 
 
@@ -35,19 +34,19 @@
     <div class="content three_quarter">
       <div id="comments">
 
-        <h1> Welcome, {{currentUser.title}} {{currentUser.lastName}} !</h1>
+        <h1>Team News</h1>
+        <h2> Welcome, {{currentUser.title}} {{currentUser.lastName}} !</h2>
 
         <!-- Error Messages -->
         <p *ngIf="saveError" class="error">{{saveError}}</p>
         <p *ngIf="saveSuccessful" class="success">{{saveSuccessful}}</p>
 
         <!-- New Post Form -->
-        <h2>Team News</h2>
         <form (ngSubmit)="createPost()">
           <div class="block clear">
             <label for="comment">New Post</label>
             <textarea name="comment" id="comment" cols="25" rows="5"
-            placeholder="What's happeneing in class today?"
+            placeholder="What's happening in class today?"
             [(ngModel)]="postContent" name="posttext"></textarea>
 
             <label for="post-picture-input">Add a Photo:</label>
@@ -63,23 +62,23 @@
         </form>
 
         <!-- Recent Post Section -->
-        <h2>Recent Posts</h2>
-        <ul>
-
+         <h2>Recent Posts</h2>
+          <ul>
             <!-- this.teamProgress = this.currentUser.class.teamworkPoints; -->
           <li *ngFor="let post of postList; let i = index">
-            <article>
+            <article *ngIf="post.ownerId.team !== currentUser.team">
               <header>
                 <figure class="avatar"><img src="assets/images/demo/new_logo.png" alt=""></figure>
                 <address>
-                By <a href="#" *ngIf="post.ownerId !== currentUser._id">{{post.ownerId.lastName}}</a>
+                By <a href="#" *ngIf="post.ownerId !== currentUser._id">{{post.ownerId.title}}{{post.ownerId.lastName}}</a>
                    <a href="#"*ngIf="post.ownerId === currentUser._id">ME</a>
                 </address>
                 <!-- <time datetime="{{post.createdAt}}"></time> -->
               </header>
               <div class="comcont">
+                <p>{{post.time}}</p>
                 <img *ngIf= "post.photo" [src]=" 'http://localhost:3000' + post.photo" alt="postphoto">
-                <h4>{{post.content}}</h4>
+                <p>{{post.content}}</p>
                 <p *ngIf="likes[i] > 0"> {{likes[i]}} Likes <img src="assets/images/thumbsup.png" alt="thumbsup"></p>
               </div>
               <button class="btn post" (click)="addLikes(i, post._id)">Like</button>
@@ -97,7 +96,7 @@
               </form>
             </div> -->
           </li>
-          <li>
+          <!-- <li>
             <article>
               <header>
                 <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
@@ -110,7 +109,7 @@
                 <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
               </div>
             </article>
-          </li>
+          </li> -->
         </ul>
       </div>
       <!-- ################################################################################################ -->

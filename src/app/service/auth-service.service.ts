@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
+import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class AuthServiceService {
@@ -16,10 +18,10 @@ export class AuthServiceService {
 signup(title, firstName, lastName, email, password){
   return this.myHttp
   .post(
-    'http://localhost:3000/api/signup', // need to change to a variable
+    environment.apiBase + '/api/signup', // need to change to a variable
     {
             //express API
-      signupTitle: title,      
+      signupTitle: title,
       signupFirstName: firstName,
       signupLastName: lastName,
       signupEmail: email,
@@ -37,7 +39,7 @@ signup(title, firstName, lastName, email, password){
 login(email, password){
   return this.myHttp
   .post(
-    'http://localhost:3000/api/login',
+    environment.apiBase + '/api/login',
     {// Form Body info to send to the back end(req.body)
       loginEmail: email,
       loginPassword: password
@@ -54,7 +56,7 @@ login(email, password){
 logout(){
   return this.myHttp
   .post(
-    'http://localhost:3000/api/logout',
+    environment.apiBase + '/api/logout',
     {},
 
     //send the cookies across domains
@@ -69,7 +71,7 @@ logout(){
 checkLogin(){
   return this.myHttp
   .get(
-    'http://localhost:3000/api/checklogin',
+    environment.apiBase + '/api/checklogin',
     //send the cookies across domains
     { withCredentials: true}
   )
