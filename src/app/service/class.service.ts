@@ -13,6 +13,7 @@ export class ClassService {
     private myHttp: Http
   ) { }
 
+// ADD POINTS TO A CLASS
   addPointsToClass(classId, teamProgress, gradesProgress, readingProgress, prepProgress){
     return this.myHttp
     .put(

@@ -28,6 +28,7 @@ export class PostServiceService {
     //Parse the JSON
     .map(res => res.json())
   }// END RETRIEVE POSTS
+//-----------------------------------------
 
   //SAVE NEW POSTS
    newPost(postContent) {
@@ -43,8 +44,8 @@ export class PostServiceService {
     //Parse the JSON
     .map(res => res.json())
   }// END RETRIEVE POSTS
+//-----------------------------------------
 
-   // NEWLY ADDED
   //ADD LIKES TO POST AND SAVE
    addLikesToPost(postlikes, postid) {
     return this.myHttp
@@ -60,8 +61,4 @@ export class PostServiceService {
     .map(res => res.json())
   }// END ADD LIKES TO POST
 
-
 }
-
-
-//
