@@ -16,7 +16,6 @@
             <br>
             <li class="three_quarter first">MESSAGES<img src="assets/images/demo/gallery/book.png" alt="book"></li>
           </ul>
-          <button class="btn"> Log Out </button>
       </nav>
     </div>
 
@@ -32,38 +31,42 @@
        </div>
       </div>
 
-      <!--TEAMWORK PROGRESS BAR  -->
-      <label for="team-total-bar"> TEAMWORK</label>
-      <div class="progress">
-       <div class="progress-bar progress-bar-success progress-bar-striped active"
-        role="progressbar" style="min-width: 5em;" [ngStyle]="{width: teamProgress + '%'}">
-       </div>
-      </div>
+      <div class="panel panel-default">
 
-      <!--GRADES PROGRESS BAR  -->
-      <label for="team-total-bar"> GOOD GRADES</label>
-      <div class="progress">
-        <div class="progress-bar progress-bar-warning progress-bar-striped active"
-         role="progressbar" style="min-width: 5em;" [ngStyle]="{width: gradesProgress + '%'}">
+        <!--TEAMWORK PROGRESS BAR  -->
+        <label for="team-total-bar"> TEAMWORK</label>
+        <div class="progress">
+         <div class="progress-bar progress-bar-success progress-bar-striped active"
+          role="progressbar" style="min-width: 5em;" [ngStyle]="{width: teamProgress + '%'}">
+         </div>
+        </div>
+
+        <!--GRADES PROGRESS BAR  -->
+        <label for="team-total-bar"> GOOD GRADES</label>
+        <div class="progress">
+          <div class="progress-bar progress-bar-warning progress-bar-striped active"
+           role="progressbar" style="min-width: 5em;" [ngStyle]="{width: gradesProgress + '%'}">
+          </div>
+        </div>
+
+        <!--PREPARATION PROGRESS BAR  -->
+        <label for="team-total-bar"> BEING PREPARED</label>
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger progress-bar-striped active"
+           role="progressbar" style="min-width: 5em;" [ngStyle]="{width: prepProgress + '%'}">
+          </div>
+        </div>
+
+        <!--READING PROGRESS BAR  -->
+        <label for="team-total-bar"> iREADY</label>
+        <div class="progress">
+          <div class="progress-bar progress-bar-info progress-bar-striped active"
+           role="progressbar" style="min-width: 5em;" [ngStyle]="{width: readProgress + '%'}">
+          </div>
         </div>
       </div>
 
-      <!--PREPARATION PROGRESS BAR  -->
-      <label for="team-total-bar"> BEING PREPARED</label>
-      <div class="progress">
-        <div class="progress-bar progress-bar-danger progress-bar-striped active"
-         role="progressbar" style="min-width: 5em;" [ngStyle]="{width: prepProgress + '%'}">
-        </div>
-      </div>
-
-      <!--READING PROGRESS BAR  -->
-      <label for="team-total-bar"> iREADY</label>
-      <div class="progress">
-        <div class="progress-bar progress-bar-info progress-bar-striped active"
-         role="progressbar" style="min-width: 5em;" [ngStyle]="{width: readProgress + '%'}">
-        </div>
-      </div>
-
+    <div class="panel panel-default">
       <!-- Points "Buttons"  -->
       <ul class="nospace clear">
         <h1>Click an icon below to add points for a cateogry:</h1>
@@ -75,6 +78,7 @@
 
         <li class="one_quarter"><img src="assets/images/reading.png" alt="book" (click)="addReadPoints(currentUser.class._id)"> <br>iREADY</li>
       </ul>
+    </div>  
 
 
       <div class="students">
@@ -91,6 +95,6 @@
     </div>
 
     </div><!-- END class="content three_quarter" -->
-    
+
   </main>
 </div>

@@ -6,12 +6,11 @@
 <link href="/assets/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
-
 <div class="wrapper row3">
   <main class="hoc container clear">
 
     <!-- SideBar -->
-    <div class="sidebar one_quarter first">
+    <div class="sidebar one_quarter first" id="sideBar">
       <h6>School Dojo</h6>
       <nav class="sdb_holder">
           <ul class="nospace clear">
@@ -28,14 +27,22 @@
 
 
     <!-- Main Feed/Post Section -->
-    <div class="content three_quarter">
+    <div class="content three_quarter" id="mainFeed">
       <div id="comments">
 
       <div>
         <button class="logout link" (click)="logOut()"> Log Out </button>
       </div>
 
-      <div class="postHeader">
+      <div class="countDown one_half first">
+        <h3>Class Point Totals </h3>
+        <p> Teamwork Points: {{currentUser.class.teamworkPoints}}</p>
+        <p> iReady Points Points: {{currentUser.class.readingPoints}}</p>
+        <p> Good Grades Points: {{currentUser.class.gradePoints}}</p>
+        <p> Preparation Points: {{currentUser.class.prepPoints}}</p>
+      </div>
+
+      <div class="postHeader one_half">
         <h1>Groovy Green's News </h1>
         <h2> Welcome, {{currentUser.title}} {{currentUser.lastName}} !</h2>
         <img src="assets/images/greenmost.png" alt="GreenMonster">
@@ -68,12 +75,12 @@
 
         <!-- Recent Post Section -->
          <h2>Recent Posts</h2>
-         <!-- {{currentUser.class.teamworkPoints}} -->
+
          <!-- {{currentUser.team.teamPoints}} -->
           <ul>
             <!-- this.teamProgress = this.currentUser.class.teamworkPoints; -->
           <li *ngFor="let post of postList; let i = index">
-            <article>
+            <article class ="article">
               <header>
                 <figure class="avatar"><img src="assets/images/demo/new_logo.png" alt=""></figure>
                 <address>
@@ -110,7 +117,7 @@
     </div>
     <div class="clear"></div>
   </main>
-</div>
+</div><!-- <div class="wrapper row3"> -->
 
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
 

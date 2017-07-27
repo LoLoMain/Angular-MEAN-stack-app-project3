@@ -14,17 +14,11 @@
   width: 50%;
 }
 
-.logout{
-  width: 50%;
-}
 
 .post{
   width: 25%;
 }
 
-/*.sidebar {
-  position: fixed;
-}*/
 
 .link{
   background:none!important;
@@ -38,7 +32,37 @@
 }
 
 .postHeader{
+  margin: 5% 0;
   padding-top: 5%;
   text-align: center;
   clear: right;
+  border-left: 3px solid #82A800;
+
 }
+
+.countDown{
+  margin: 5% 0;
+  padding-top: 5%;
+  clear: right;
+}
+
+.article{
+  /*background-color: #f2f2f2;*/
+  background-color: #ededed;
+  padding: 3%;
+  border-radius: 5px;
+}
+
+
+/*#sideBar{
+    position: fixed;
+    width: 11%;
+    bottom: 2%;
+    margin-top: 300px;
+}
+
+#mainFeed{
+  position: relative;
+  margin-left: 25%
+
+}*/
