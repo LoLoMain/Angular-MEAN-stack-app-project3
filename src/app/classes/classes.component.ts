@@ -31,6 +31,7 @@ export class ClassesComponent implements OnInit {
       this.currentUser = userFromApi;
       console.log(this.currentUser.team);
 
+
       this.teamProgress = this.currentUser.class.teamworkPoints;
       this.gradesProgress= this.currentUser.class.gradePoints;
       this.prepProgress = this.currentUser.class.prepPoints;
@@ -38,6 +39,7 @@ export class ClassesComponent implements OnInit {
 
       this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
       this.studentList = this.currentUser.class.students;
+      console.log(this.teamTotal);
     })
     .catch((err)=>{
       this.router.navigate(['/'])

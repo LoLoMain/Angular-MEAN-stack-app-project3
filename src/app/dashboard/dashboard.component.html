@@ -70,10 +70,12 @@
 
         <!-- Recent Post Section -->
          <h2>Recent Posts</h2>
+         <!-- {{currentUser.class.teamworkPoints}} -->
+         <!-- {{currentUser.team.teamPoints}} -->
           <ul>
             <!-- this.teamProgress = this.currentUser.class.teamworkPoints; -->
           <li *ngFor="let post of postList; let i = index">
-            <article *ngIf="post.ownerId.team !== currentUser.team">
+            <article>
               <header>
                 <figure class="avatar"><img src="assets/images/demo/new_logo.png" alt=""></figure>
                 <address>

@@ -30,7 +30,7 @@ export class PostServiceService {
   }// END RETRIEVE POSTS
 
   //SAVE NEW POSTS
-   newPost(postContent,photoUrl) {
+   newPost(postContent) {
     return this.myHttp
     .post(
       environment.apiBase + '/api/posts',

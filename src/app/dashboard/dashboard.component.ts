@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 //New for File Uploader
 import { FileUploader} from 'ng2-file-upload';
-import { environment } from '../../environments/environment';
+
 
 import {AuthServiceService} from '../service/auth-service.service';
 import {PostServiceService} from '../service/post-service.service';
@@ -52,6 +53,7 @@ export class DashboardComponent implements OnInit {
       console.log(this.currentUser.team);
       this.showPosts();
       console.log(this.currentUser);
+      this.pointsList = this.currentUser.team.teamPoints
       console.log(this.pointsList);
     })
     .catch((err)=>{
@@ -68,28 +70,37 @@ export class DashboardComponent implements OnInit {
       postList.forEach((post)=> {
         this.likes.push(post.likes);
       });
-
     },
     () =>{
       this.postListErrorMessage = "No Posts to Display, Why don't you try adding some!"
     }
    );
  } //END SHOWLIST OF POSTS
-
+//-------------------------------------------------------------------------
 
   // ADD NEW POSTS
   createPost(){
+    if (this.fileUpload.getNotUploadedItems().length === 0){
+      this.savePostNoPhoto();
+    }
+    else{
+      this.savePostWithPhoto();
+    }
+  }
+
+  //Post WITH PHOTO
+  savePostWithPhoto(){
     this.fileUpload.onBuildItemForm = (item, form)=>{
       form.append('postContent', this.postContent);
     };
 
     this.fileUpload.onSuccessItem = (item, response) =>{
-        const newPostFromApi = JSON.parse(response);
-        this.postList.unshift(newPostFromApi);
-        console.log(item);
-        console.log(response);
-        this.saveSuccessful = "Saved Successfully!"
-        this.saveError = "";
+      const newPostFromApi = JSON.parse(response);
+      this.postList.unshift(newPostFromApi);
+      console.log(item);
+      console.log(newPostFromApi);
+      this.saveSuccessful = "Saved Successfully!"
+      this.saveError = "";
     };
 
     this.fileUpload.onErrorItem = (item, response)=>{
@@ -100,21 +111,26 @@ export class DashboardComponent implements OnInit {
 
     //initiates AJAX request
     this.fileUpload.uploadAll();
+  } // END Save post with photo
 
-    // this.postServ.newPost(this.postContent, this.postPhotoUrl)
-    // .subscribe((newPostFromApi)=>{
-    //
-    // },
-    // (err)=>{
-    //   this.saveSuccessful = "";
-    //   this.saveError = " Whoops! something went wrong! Try again.";
-    // }
-    //)
-  }// END ADD NEW POSTS
+//Post WITH PHOTO
+savePostNoPhoto(){
+  this.postServ.newPost(this.postContent)
+  .subscribe((newPostFromApi) =>{
+    this.postList.unshift(newPostFromApi);
+    this.saveSuccessful = "Saved Successfully!";
+    this.saveError = "";
+  },
+  (err)=> {
+    this.saveSuccessful = "";
+    this.saveError = " Whoops! something went wrong! Try again.";
+  });
+}
+//-------------------------------------------------------------------------
 
 //ADD Likes
 addLikes(i, id){
-    this.likes[i] += 1;
+  this.likes[i] += 1;
 
   this.postServ.addLikesToPost(this.likes[i], id)
   .subscribe((postFromApi) =>{
@@ -122,6 +138,8 @@ addLikes(i, id){
   }
   )
 }
+//-------------------------------------------------------------------------
+
 
 //SHOW POINTS
 showPoints(id){
@@ -136,6 +154,8 @@ showPoints(id){
  );
 
 }
+//-------------------------------------------------------------------------
+
 
 //LOG OUT USER
   logOut(){
@@ -147,5 +167,4 @@ showPoints(id){
       this.logoutError = "Log out Failure";
     });
   }
-
 }
