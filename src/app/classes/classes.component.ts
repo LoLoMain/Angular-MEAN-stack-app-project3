@@ -31,7 +31,6 @@ export class ClassesComponent implements OnInit {
       this.currentUser = userFromApi;
       console.log(this.currentUser.team);
 
-
       this.teamProgress = this.currentUser.class.teamworkPoints;
       this.gradesProgress= this.currentUser.class.gradePoints;
       this.prepProgress = this.currentUser.class.prepPoints;
@@ -46,24 +45,22 @@ export class ClassesComponent implements OnInit {
     })
   }
 
-//Refactor these functions
-
+//Refactor these functions (see comments below - come back)
   addTeamPoints(id){
     this.teamProgress +=5;
 
     this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
       .subscribe((classFromApi)=>{
-        console.log( `${this.currentUser.lastName}class has ${this.teamProgress}  teamwork points!`);
-
+       console.log( `${this.currentUser.lastName}class has ${this.teamProgress}  teamwork points!`);
       })
   }
+
   addGradePoints(id){
     this.gradesProgress +=5;
 
     this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
       .subscribe((classFromApi)=>{
-        console.log( `${this.currentUser.lastName}class has ${this.gradesProgress}  teamwork points!`);
-
+       console.log( `${this.currentUser.lastName}class has ${this.gradesProgress}  GRADES points!`);
       })
   }
 
@@ -72,20 +69,17 @@ export class ClassesComponent implements OnInit {
 
     this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
       .subscribe((classFromApi)=>{
-        console.log( `${this.currentUser.lastName}class has ${this.prepProgress}  teamwork points!`);
-
+       console.log( `${this.currentUser.lastName}class has ${this.prepProgress}  PREP points!`);
       })
-
   }
+
   addReadPoints(id){
     this.readProgress +=5;
 
     this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
       .subscribe((classFromApi)=>{
-        console.log( `${this.currentUser.lastName}class has ${this.readProgress}  teamwork points!`);
-
+       console.log( `${this.currentUser.lastName}class has ${this.readProgress}  READING points!`);
       })
-
   }
 
 }
