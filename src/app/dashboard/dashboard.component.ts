@@ -100,6 +100,7 @@ export class DashboardComponent implements OnInit {
       console.log(item);
       console.log(newPostFromApi);
       this.saveSuccessful = "Saved Successfully!"
+      this.postContent = "";
       this.saveError = "";
     };
 
@@ -113,12 +114,14 @@ export class DashboardComponent implements OnInit {
     this.fileUpload.uploadAll();
   } // END Save post with photo
 
-//Post WITH PHOTO
+//Post withOUT PHOTO
 savePostNoPhoto(){
   this.postServ.newPost(this.postContent)
   .subscribe((newPostFromApi) =>{
     this.postList.unshift(newPostFromApi);
+    console.log(newPostFromApi);
     this.saveSuccessful = "Saved Successfully!";
+    this.postContent = "";
     this.saveError = "";
   },
   (err)=> {

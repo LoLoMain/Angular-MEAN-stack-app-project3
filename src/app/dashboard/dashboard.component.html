@@ -9,7 +9,6 @@
 
 <div class="wrapper row3">
   <main class="hoc container clear">
-    <!-- main body -->
 
     <!-- SideBar -->
     <div class="sidebar one_quarter first">
@@ -24,9 +23,8 @@
             <br>
             <li class="three_quarter first">MESSAGES<img src="assets/images/demo/gallery/book.png" alt="book"></li>
           </ul>
-
       </nav>
-    </div> <!-- END SideBar -->
+    </div> <!-- END <div class="SideBar" -->
 
 
     <!-- Main Feed/Post Section -->
@@ -81,14 +79,15 @@
                 <address>
                 By <a href="#" *ngIf="post.ownerId !== currentUser._id">{{post.ownerId.title}}{{post.ownerId.lastName}}</a>
                    <a href="#"*ngIf="post.ownerId === currentUser._id">ME</a>
+                  on <p>{{post.createdAt | date: 'yMMMdjms'}}</p>
                 </address>
-                <!-- <time datetime="{{post.createdAt}}"></time> -->
               </header>
+
               <div class="comcont">
-                <p>{{post.time}}</p>
+
                 <img *ngIf= "post.photo" [src]="baseUrl + post.photo" alt="postphoto">
                 <p>{{post.content}}</p>
-                <p *ngIf="likes[i] > 0"> {{likes[i]}} Likes <img src="assets/images/thumbsup.png" alt="thumbsup"></p>
+                <h5 *ngIf="likes[i] > 0"> {{likes[i]}} Likes <img src="assets/images/thumbsup.png" alt="thumbsup"></h5>
               </div>
               <button class="btn post" (click)="addLikes(i, post._id)">Like</button>
               <button class="btn post" (click)="addCommentBox()">Comment</button>
@@ -105,31 +104,17 @@
               </form>
             </div> -->
           </li>
-          <!-- <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="assets/images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
-          </li> -->
         </ul>
       </div>
-      <!-- ################################################################################################ -->
+
     </div>
-    <!-- ################################################################################################ -->
-    <!-- / main body -->
     <div class="clear"></div>
   </main>
 </div>
 
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+
+
 <!-- JAVASCRIPTS -->
 <script src="../layout/scripts/jquery.min.js"></script>
 <script src="../layout/scripts/jquery.backtotop.js"></script>
