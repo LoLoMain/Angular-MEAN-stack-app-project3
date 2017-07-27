@@ -16,6 +16,7 @@ import { ClassesComponent } from './classes/classes.component';
 import {AuthServiceService} from './service/auth-service.service';
 import {PostServiceService} from './service/post-service.service';
 import {ClassService} from './service/class.service';
+import { TeamsComponent } from './teams/teams.component';
 
 
 
@@ -25,7 +26,8 @@ import {ClassService} from './service/class.service';
     HomeComponent,
     DashboardComponent,
     SigninComponent,
-    ClassesComponent
+    ClassesComponent,
+    TeamsComponent
   ],
   imports: [
     BrowserModule,

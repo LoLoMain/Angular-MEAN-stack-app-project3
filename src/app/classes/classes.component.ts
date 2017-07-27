@@ -18,7 +18,7 @@ export class ClassesComponent implements OnInit {
   prepProgress: any = 0;
   readProgress: any = 0;
 
-  teamTotal: any;
+  teamTotal: any =0;
   constructor(
     private authServ: AuthServiceService,
     private classServ: ClassService,
@@ -30,10 +30,13 @@ export class ClassesComponent implements OnInit {
     .then((userFromApi)=>{
       this.currentUser = userFromApi;
       console.log(this.currentUser.team);
+
       this.teamProgress = this.currentUser.class.teamworkPoints;
       this.gradesProgress= this.currentUser.class.gradePoints;
-      this.prepProgress = this.currentUser.class.readingPoints;
-      this.readProgress= this.currentUser.class.prepPoints;
+      this.prepProgress = this.currentUser.class.prepPoints;
+      this.readProgress= this.currentUser.class.readingPoints;
+
+      this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
       this.studentList = this.currentUser.class.students;
     })
     .catch((err)=>{
@@ -45,7 +48,6 @@ export class ClassesComponent implements OnInit {
 
   addTeamPoints(id){
     this.teamProgress +=5;
-    this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
 
     this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
       .subscribe((classFromApi)=>{
@@ -55,33 +57,30 @@ export class ClassesComponent implements OnInit {
   }
   addGradePoints(id){
     this.gradesProgress +=5;
-    this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
 
     this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
       .subscribe((classFromApi)=>{
-        console.log( `${this.currentUser.lastName}class has ${this.teamProgress}  teamwork points!`);
+        console.log( `${this.currentUser.lastName}class has ${this.gradesProgress}  teamwork points!`);
 
       })
   }
 
   addPrepPoints(id){
     this.prepProgress +=5;
-    this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
 
     this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
       .subscribe((classFromApi)=>{
-        console.log( `${this.currentUser.lastName}class has ${this.teamProgress}  teamwork points!`);
+        console.log( `${this.currentUser.lastName}class has ${this.prepProgress}  teamwork points!`);
 
       })
 
   }
   addReadPoints(id){
     this.readProgress +=5;
-    this.teamTotal = this.teamProgress + this.gradesProgress + this.prepProgress + this.readProgress;
 
     this.classServ.addPointsToClass(id, this.teamProgress, this.gradesProgress, this.readProgress, this.prepProgress)
       .subscribe((classFromApi)=>{
-        console.log( `${this.currentUser.lastName}class has ${this.teamProgress}  teamwork points!`);
+        console.log( `${this.currentUser.lastName}class has ${this.readProgress}  teamwork points!`);
 
       })
 

@@ -21,3 +21,24 @@
 .post{
   width: 25%;
 }
+
+/*.sidebar {
+  position: fixed;
+}*/
+
+.link{
+  background:none!important;
+  border:none;
+  padding:0!important;
+  cursor:pointer;
+  text-decoration: underline;
+  color:#82A800;
+  font-size: larger;
+  float: right;
+}
+
+.postHeader{
+  padding-top: 5%;
+  text-align: center;
+  clear: right;
+}

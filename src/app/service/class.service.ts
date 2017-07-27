@@ -28,4 +28,16 @@ export class ClassService {
     .map(res=> res.json())
   }// End add points to class
 
+
+//SHOW POINTS
+  showPointsFromDb(classId){
+    return this.myHttp
+    .get(
+      environment.apiBase + '/api/classpoints/' + classId,
+      { withCredentials: true}
+    )
+    //Parse the JSON
+    .map(res => res.json())
+  }
+
 }

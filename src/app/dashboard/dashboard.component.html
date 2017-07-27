@@ -20,22 +20,29 @@
             <br>
             <li class="three_quarter first">MY CLASS<a [routerLink]="['class']"><img src="assets/images/demo/gallery/students.png" alt="students"></a></li>
             <br>
-            <li class="three_quarter first">TEAMS<a href="#"><img src="assets/images/demo/gallery/rocket.png" alt="rocket"></a></li>
+            <li class="three_quarter first">TEAMS<a [routerLink]="['teams']"><img src="assets/images/demo/gallery/rocket.png" alt="rocket"></a></li>
             <br>
-            <li class="three_quarter first">MESSAGES<a href="#"><img src="assets/images/demo/gallery/book.png" alt="book"></a></li>
+            <li class="three_quarter first">MESSAGES<img src="assets/images/demo/gallery/book.png" alt="book"></li>
           </ul>
-          <button class="btn logout" (click)="logOut()"> Log Out </button>
+
       </nav>
     </div> <!-- END SideBar -->
-
 
 
     <!-- Main Feed/Post Section -->
     <div class="content three_quarter">
       <div id="comments">
 
-        <h1>Team News</h1>
+      <div>
+        <button class="logout link" (click)="logOut()"> Log Out </button>
+      </div>
+
+      <div class="postHeader">
+        <h1>Groovy Green's News </h1>
         <h2> Welcome, {{currentUser.title}} {{currentUser.lastName}} !</h2>
+        <img src="assets/images/greenmost.png" alt="GreenMonster">
+      </div>
+
 
         <!-- Error Messages -->
         <p *ngIf="saveError" class="error">{{saveError}}</p>
@@ -77,7 +84,7 @@
               </header>
               <div class="comcont">
                 <p>{{post.time}}</p>
-                <img *ngIf= "post.photo" [src]=" 'http://localhost:3000' + post.photo" alt="postphoto">
+                <img *ngIf= "post.photo" [src]="baseUrl + post.photo" alt="postphoto">
                 <p>{{post.content}}</p>
                 <p *ngIf="likes[i] > 0"> {{likes[i]}} Likes <img src="assets/images/thumbsup.png" alt="thumbsup"></p>
               </div>

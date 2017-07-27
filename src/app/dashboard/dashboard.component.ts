@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //New for File Uploader
 import { FileUploader} from 'ng2-file-upload';
+import { environment } from '../../environments/environment';
 
 import {AuthServiceService} from '../service/auth-service.service';
 import {PostServiceService} from '../service/post-service.service';
+import {ClassService} from '../service/class.service';
 
 
 @Component({
@@ -23,8 +25,13 @@ export class DashboardComponent implements OnInit {
   postPhotoUrl: string;
   likes: any[] = [];
 
+  pointsListErrorMessage:string;
+  pointsList: any;
+
+  baseUrl = environment.apiBase;
+
   fileUpload = new FileUploader({
-    url: 'http://localhost:3000/api/posts'
+    url: this.baseUrl + '/api/posts'
   });
 
   saveSuccessful: string;
@@ -34,6 +41,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private authServ: AuthServiceService,
     private postServ: PostServiceService,
+    private classServ: ClassService,
     private router: Router
   ) { }
 
@@ -44,6 +52,7 @@ export class DashboardComponent implements OnInit {
       console.log(this.currentUser.team);
       this.showPosts();
       console.log(this.currentUser);
+      console.log(this.pointsList);
     })
     .catch((err)=>{
       this.router.navigate(['/'])
@@ -112,6 +121,20 @@ addLikes(i, id){
     console.log(this.likes[i]);
   }
   )
+}
+
+//SHOW POINTS
+showPoints(id){
+  this.classServ.showPointsFromDb(id)
+  .subscribe((pointsList)=>{
+    this.pointsList = pointsList;
+    console.log(pointsList);
+  },
+  () =>{
+    this.pointsListErrorMessage = "No Points to Display, Why don't you try adding some!"
+  }
+ );
+
 }
 
 //LOG OUT USER
